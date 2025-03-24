@@ -90,7 +90,7 @@ def generate(client, model, conversation_history, user_input, files):
     )
 
     generate_content_config = types.GenerateContentConfig(
-        temperature=0.2,
+        temperature=0.5,
         top_p=0.95,
         top_k=40,
         max_output_tokens=2048,
