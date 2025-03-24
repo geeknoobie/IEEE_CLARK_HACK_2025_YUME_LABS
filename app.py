@@ -8,12 +8,12 @@ if 'initialized' not in st.session_state:
     st.session_state.initialized = False  # Initializing a boolean to track if the chatbot has been initialized.
 
 # Streamlit app
-st.title("ClarkBot - Your Virtual Assistant")  # Setting the title of the Streamlit app.
+st.title("ClarkuBot - Your Virtual Assistant")  # Setting the title of the Streamlit app.
 st.write("Ask me anything about Clark University!")  # Displaying a message to the user.
 
 # Initialize chatbot
 if not st.session_state.initialized:  # Checking if the chatbot has been initialized.
-    with st.spinner("Initializing ClarkBot and processing files..."):  # Displaying a spinner while initializing.
+    with st.spinner("Initializing ClarkuBot and processing files..."):  # Displaying a spinner while initializing.
         client, model, conversation_history, files = initialize_chatbot()  # Initializing the chatbot.
         if client is not None:  # Checking if a chatbot was initialized successfully.
             st.session_state.client = client  # Storing the client in session state.
@@ -21,9 +21,9 @@ if not st.session_state.initialized:  # Checking if the chatbot has been initial
             st.session_state.conversation_history = conversation_history  # Storing the conversation history in session state.
             st.session_state.files = files  # Storing the uploaded files in session state.
             st.session_state.initialized = True  # Setting the initialized flag to True.
-            st.success("ClarkBot is ready!")  # Displaying a success message.
+            st.success("ClarkuBot is ready!")  # Displaying a success message.
         else:
-            st.error("Failed to initialize ClarkBot. Please check your API key and files.")  # Displaying an error message.
+            st.error("Failed to initialize ClarkuBot. Please check your API key and files.")  # Displaying an error message.
             st.stop()  # Stopping the app execution.
 
 # Display conversation history
@@ -31,7 +31,7 @@ for message in st.session_state.conversation:  # Iterating through the conversat
     if message['role'] == 'user':  # Checking if the message is from the user.
         st.markdown(f"**You:** {message['content']}")  # Displaying the user message.
     else:
-        st.markdown(f"**ClarkBot:** {message['content']}")  # Displaying the chatbot message.
+        st.markdown(f"**ClarkuBot:** {message['content']}")  # Displaying the chatbot message.
     st.write("---")  # Displaying a separator between messages.
 
 # User input
@@ -42,7 +42,7 @@ if user_input:
         {'role': 'user', 'content': user_input})  # Adding the user message to the conversation history.
 
     # Generate response
-    with st.spinner("ClarkBot is thinking..."):  # Displaying a spinner while generating the response.
+    with st.spinner("ClarkuBot is thinking..."):  # Displaying a spinner while generating the response.
         generate(
             st.session_state.client,
             st.session_state.model,
